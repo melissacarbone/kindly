@@ -6,7 +6,7 @@ feature 'User signs up' do
   # So that I can be inspired to increase my random acts of kindness
 
   # ACCEPTANCE CRITERIA
-  # *I must specify an email address, email confirmation, first name, last name, username, password, and password confirmation.
+  # *I must specify an email, first name, last name, password, and password confirmation.
   # *If I do not specify required information, I will not be granted access to the site.
   # *If I specify all of the required information, my account will be created and I can track my random acts of kindness.
 
