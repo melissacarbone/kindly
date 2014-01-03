@@ -8,7 +8,7 @@ feature 'User adds a post' do
   # *I will be required to select a date, category, and enter a  title and text description of the activity.
   # *If I do not include all required fields, I will not be able to save my activity and I will be presented with an error message.
   # *If I complete all required fields I will be able to save my activity for later viewing.
-  scenario 'an authenticated user adds a post' do
+  scenario 'an authenticated user adds a post with valid attributes' do
     user = FactoryGirl.create(:user)
     visit 'users/sign_in'
     click_link 'Sign In'
@@ -27,6 +27,24 @@ feature 'User adds a post' do
     expect(page).to have_content('Title')
     expect(page).to have_content('Description')
   end
+
+  scenario 'an authenticated user adds a post with invalid attributes' do
+    user = FactoryGirl.create(:user)
+    visit 'users/sign_in'
+    click_link 'Sign In'
+    fill_in 'E-mail', with: user.email
+    fill_in 'Password', with: user.password
+    click_button 'Sign In'
+
+    click_link 'Share some kindness!'
+    click_button 'Share'
+
+    expect(page).to have_content("Title can't be blank")
+    expect(page).to have_content("Description can't be blank")
+    expect(page).to have_content("Date can't be blank")
+    expect(page).to_not have_content('Success!')
+  end
+
   scenario 'as an unauthenticated user' do
     visit 'posts/new'
 
