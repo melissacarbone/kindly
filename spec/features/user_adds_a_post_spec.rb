@@ -8,9 +8,12 @@ feature 'User adds a post' do
   # *I will be required to select a date, category, and enter a  title and text description of the activity.
   # *If I do not include all required fields, I will not be able to save my activity and I will be presented with an error message.
   # *If I complete all required fields I will be able to save my activity for later viewing.
+<<<<<<< HEAD
   # *If I am not signed in I cannot add posts
   # *My posts should be associated with my account
 
+=======
+>>>>>>> 93289f606150a0e7adddf565c54c147b575e13bb
   scenario 'an authenticated user adds a post with valid attributes' do
     user = FactoryGirl.create(:user)
     visit 'users/sign_in'
