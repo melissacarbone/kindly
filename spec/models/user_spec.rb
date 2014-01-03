@@ -1,6 +1,8 @@
 require 'spec_helper'
 
 describe User do
+  it { should have_many(:posts) }
+
   it { should have_valid(:first_name).when('Melissa', 'Alex') }
   it { should_not have_valid(:first_name).when(nil, '') }
 

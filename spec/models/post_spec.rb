@@ -6,5 +6,6 @@ describe Post do
   it { should validate_presence_of(:date) }
 
   it { should belong_to(:category) }
+  it { should belong_to(:user) }
 
 end
