@@ -27,5 +27,14 @@ feature 'User adds a post' do
     expect(page).to have_content('Title')
     expect(page).to have_content('Description')
   end
-  scenario 'as an unauthenticated user'
+  scenario 'as an unauthenticated user' do
+    visit 'posts/new'
+
+    expect(page).to have_content('Sign In')
+    expect(page).to_not have_content('Sign Out')
+    expect(page).to_not have_content('Title')
+    expect(page).to_not have_content('Description')
+
+
+  end
 end
