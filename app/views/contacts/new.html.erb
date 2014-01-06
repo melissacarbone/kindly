@@ -1,0 +1,28 @@
+<h1>Contact Us!</h1>
+<%= notice %>
+<% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this event from being saved:</h2>
+
+      <ul>
+      <% @contact.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<%= form_for @contact do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.label :subject %>
+  <%= f.text_area :subject %>
+  <%= f.label :description %>
+  <%= f.text_area :description %>
+  <%= f.label :first_name, 'First Name' %>
+  <%= f.text_field :first_name %>
+  <%= f.label :last_name, 'Last Name' %>
+  <%= f.text_area :last_name %>
+
+  <%= f.submit "Send Form" %>
+<% end %>
