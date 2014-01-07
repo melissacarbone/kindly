@@ -7,9 +7,10 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
 
     if @contact.save
+      ContactForm.receipt.deliver
       redirect_to new_contact_path, notice: 'Form was successfully submitted.'
     else
-      render 'new', notice: 'There was an error processing your form.'
+      render 'new'
     end
   end
 
