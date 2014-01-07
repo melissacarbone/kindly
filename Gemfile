@@ -45,6 +45,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'quiet_assets'
   gem 'launchy'
+  gem 'pry-rails'
 
 end
 
