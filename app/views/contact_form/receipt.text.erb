@@ -1,3 +1,9 @@
-ContactForm#receipt
-
+<p>
+You've received a new message from <%= @contactform[:first_name] %> <%= @contactform[:last_name] %>
+</p>
+<p>
+Subject:<%= @contactform[:subject] %>
+</p>
+<p>
 <%= @contactform[:description] %>
+</p>

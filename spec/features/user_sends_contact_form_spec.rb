@@ -18,7 +18,7 @@ feature 'User sends a contact form' do
   end
 
   scenario 'with invalid attributes' do
-
+    ActionMailer::Base.deliveries = []
     visit root_path
     click_link 'Contact Us!'
     click_button 'Send Form'
@@ -29,6 +29,7 @@ feature 'User sends a contact form' do
     expect(page).to have_content('First name can\'t be blank')
     expect(page).to have_content('Last name can\'t be blank')
     expect(page).to_not have_content('Form was successfully submitted.')
+    expect(ActionMailer::Base.deliveries.size).to eq(0)
 
   end
 
