@@ -9,6 +9,7 @@ feature 'User signs in' do
   # *If I specify a valid, previously registered email and password, I am authenticated and I gain access to the system.
   # *If I specify an invalid email address or password, I remain unauthenticated.
   # *If I am already signed in, I cannot sign in again.
+  # *I must be directed to my index page when I sign into my account.
 
   scenario 'an existing user specifies a valid email and password' do
     user = FactoryGirl.create(:user)
@@ -20,6 +21,7 @@ feature 'User signs in' do
 
     expect(page).to have_content('Welcome Back!')
     expect(page).to have_content('Sign Out')
+    current_path.should eq(posts_path)
   end
 
   scenario 'a nonexistent email and password is supplied' do

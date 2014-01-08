@@ -29,6 +29,7 @@ feature 'User adds a post' do
     expect(page).to have_content('Sign Out')
     expect(page).to have_content('Title')
     expect(page).to have_content('Description')
+    expect(Post.all.count).to eq(1)
   end
 
   scenario 'an authenticated user adds a post with invalid attributes' do

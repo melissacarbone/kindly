@@ -5,5 +5,6 @@ FactoryGirl.define do
     description 'I like this site'
     first_name 'Jane'
     last_name 'Doe'
+    user
   end
 end
