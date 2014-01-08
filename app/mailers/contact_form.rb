@@ -7,6 +7,6 @@ class ContactForm < ActionMailer::Base
   #
   def receipt(contactform)
     @contactform = contactform
-    mail from: contactform[:email], to: 'mcarbone1@gmail.com', subject: 'New Contact Form'
+    mail from: contactform[:email], to: 'mcarbone1@gmail.com', subject: 'New Kindly Message'
   end
 end
