@@ -37,6 +37,10 @@ end
 gem 'simple_form'
 gem 'devise'
 
+group :development do
+  gem 'mailcatcher'
+end
+
 group :development, :test do
   gem 'rspec-rails'
   gem 'shoulda'
