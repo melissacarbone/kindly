@@ -17,6 +17,7 @@ feature 'User views their own posts', %Q{
     fill_in 'E-mail', with: current_user.email
     fill_in 'Password', with: current_user.password
     click_button 'Sign In'
+    click_link 'My Posts'
 
     post = FactoryGirl.create(:post)
     post.user_id = current_user.id
@@ -27,6 +28,7 @@ feature 'User views their own posts', %Q{
     expect(page).to have_content('Title')
     expect(page).to have_content('Description')
     expect(post.user_id).to eq(current_user.id)
+    current_path.should eq(user_posts_path(current_user))
   end
 
   scenario 'while not logged in' do
