@@ -24,11 +24,14 @@ feature 'User views their own posts', %Q{
 
     visit user_posts_path(current_user)
 
-    expect(page).to have_content('Random Acts of Kindness')
+    expect(page).to have_content('My Random Acts of Kindness')
     expect(page).to have_content('Title')
     expect(page).to have_content('Description')
     expect(post.user_id).to eq(current_user.id)
     current_path.should eq(user_posts_path(current_user))
+    expect(page).to_not have_content('My Posts')
+    expect(page).to have_content('Recent Posts')
+    expect(page).to_not have_content('Recent Random Acts of Kindness')
   end
 
   scenario 'while not logged in' do

@@ -1,22 +1,26 @@
-<h1>Recent Random Acts of Kindness</h1>
-<%= link_to 'My Posts', user_posts_path(current_user) %>
-<%= link_to 'Recent Posts', posts_path %>
-<table>
-  <thead>
-    <tr>
-      <th>Title:</th>
-      <th>Description:</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <% @posts.each do |post| %>
-    <tr>
-       <td><%= post.title %></td>
-       <td><%= post.description %></td>
-       <td><%= post.created_at %></td>
-       <td><%= link_to 'Show', post %></td>
-    </tr>
+  <% if params[:user_id] %>
+    <h1>My Random Acts of Kindness</h1>
+    <%= link_to 'Recent Posts', @link_path %>
+  <% else %>
+    <h1>Recent Random Acts of Kindness</h1>
+    <%= link_to 'My Posts', @link_path %>
   <% end %>
-</table>
+    <table>
+      <thead>
+        <tr>
+          <th>Title:</th>
+          <th>Description:</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+
+      <% @posts.each do |post| %>
+        <tr>
+           <td><%= post.title %></td>
+           <td><%= post.description %></td>
+           <td><%= post.created_at %></td>
+           <td><%= link_to 'Show', post %></td>
+        </tr>
+      <% end %>
+    </table>

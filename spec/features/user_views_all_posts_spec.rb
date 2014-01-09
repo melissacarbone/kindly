@@ -19,6 +19,9 @@ feature 'User views recent posts from other users', %Q{
 
     expect(page).to have_content('My Posts')
     expect(page).to have_content('Recent Random Acts of Kindness')
+    expect(page).to_not have_content('Recent Posts')
+    expect(page).to_not have_content('My Random Acts of Kindness')
+
   end
 
   scenario 'while not signed in' do

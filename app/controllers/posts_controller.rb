@@ -5,8 +5,10 @@ class PostsController < ApplicationController
   def index
     if params[:user_id]
       @posts = Post.where(user_id: params[:user_id])
+      @link_path = posts_path
     else
       @posts = Post.order('created_at DESC').limit(10)
+      @link_path = user_posts_path(current_user)
     end
   end
 
