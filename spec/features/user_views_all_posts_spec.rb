@@ -21,5 +21,12 @@ feature 'User views recent posts from other users', %Q{
     expect(page).to have_content('Recent Random Acts of Kindness')
   end
 
-  scenario 'while not signed in'
+  scenario 'while not signed in' do
+    current_user = FactoryGirl.create(:user)
+    visit user_posts_path(current_user)
+
+    expect(page).to_not have_content('My Posts')
+    expect(page).to_not have_content('Recent Random Acts of Kindness')
+    expect(page).to have_content('Sign In')
+  end
 end
