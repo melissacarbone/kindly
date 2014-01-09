@@ -3,7 +3,11 @@ class PostsController < ApplicationController
     only: [:new, :index, :show]
 
   def index
-    @posts = Post.all
+    if params[:user_id]
+      @posts = Post.where(user_id: params[:user_id])
+    else
+      @posts = Post.order('created_at DESC').limit(10)
+    end
   end
 
   def new
@@ -28,6 +32,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :description, :date)
+    params.require(:post).permit(:title, :description)
   end
 end

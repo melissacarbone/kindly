@@ -22,7 +22,6 @@ feature 'User adds a post' do
     click_link 'Share some kindness!'
     fill_in 'Title', with: 'Coffee Surprise'
     fill_in 'Description', with: 'Paid for the person behind me at Starbucks.'
-    fill_in 'Date', with: '2014-1-1'
     click_button 'Share'
 
     expect(page).to have_content('Success!')
@@ -45,7 +44,6 @@ feature 'User adds a post' do
 
     expect(page).to have_content("Title can't be blank")
     expect(page).to have_content("Description can't be blank")
-    expect(page).to have_content("Date can't be blank")
     expect(page).to_not have_content('Success!')
   end
 

@@ -1,7 +1,12 @@
 Kindly::Application.routes.draw do
   devise_for :users
 
-  resources :posts, only:[:new, :index, :create, :show]
+  resources :users do
+    resources :posts, only:[:index]
+  end
+
+  resources :posts
+
 
   resources :contacts, only:[:new, :index, :create]
   # The priority is based upon order of creation: first created -> highest priority.
