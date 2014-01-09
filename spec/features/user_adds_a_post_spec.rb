@@ -29,6 +29,7 @@ feature 'User adds a post' do
     expect(page).to have_content('Title')
     expect(page).to have_content('Description')
     expect(Post.all.count).to eq(1)
+    current_path.should eq(posts_path)
   end
 
   scenario 'an authenticated user adds a post with invalid attributes' do

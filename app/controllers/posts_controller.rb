@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
 
     if @post.save
-      redirect_to @post, notice: 'Success!'
+      redirect_to posts_path, notice: 'Success!'
     else
       render 'new', notice: 'Post could not be saved'
     end
