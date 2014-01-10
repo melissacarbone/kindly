@@ -2,10 +2,12 @@ Kindly::Application.routes.draw do
   devise_for :users
 
   resources :users do
-    resources :posts, only:[:index]
+    resources :posts
   end
 
-  resources :posts
+  resources :posts do
+    resources :posts, only:[:new, :create]
+  end
 
 
   resources :contacts, only:[:new, :index, :create]

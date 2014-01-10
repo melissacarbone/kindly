@@ -14,11 +14,19 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+
+    if params[:post_id]
+      @parent = Post.find(params[:post_id])
+      @target = [@parent, @post]
+    else
+      @target = @post
+    end
   end
 
   def create
     @post = Post.new(post_params)
-    @post.user_id = current_user.id
+    @post.user = current_user
+    @post.parent = Post.find(params[:post_id]) if params[:post_id]
 
     if @post.save
       redirect_to posts_path, notice: 'Success!'
