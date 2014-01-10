@@ -11,7 +11,7 @@
           <th>Title:</th>
           <th>Description:</th>
           <th></th>
-          <th></th>
+          <th>Posted by:</th>
         </tr>
       </thead>
 
@@ -20,6 +20,7 @@
            <td><%= post.title %></td>
            <td><%= post.description %></td>
            <td><%= post.created_at %></td>
+           <td><%= User.find(post.user_id).email %></td>
            <td><%= link_to 'Show', post %></td>
         </tr>
       <% end %>
