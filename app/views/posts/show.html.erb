@@ -18,7 +18,12 @@
   <% end %>
 </p>
 
+<p>
 <% if @post.user_id != current_user.id %>
   <li><%= link_to 'Inspired by this!', new_post_post_path(@post) %></li>
 <% end %>
+</p>
+<p>
+  <%= link_to 'Back To Recent Posts', posts_path %>
+</p>
 
