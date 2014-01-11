@@ -7,6 +7,10 @@
   <strong>Description:</strong>
   <%= @post.description %>
 </p>
+<p>
+  <strong>Category:</strong>
+  <%= Category.find(@post.category_id).name %>
+</p>
 
 <p>
   <%= @post.created_at %>

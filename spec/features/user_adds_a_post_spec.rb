@@ -15,19 +15,22 @@ feature 'User adds a post' do
     user = FactoryGirl.create(:user)
     visit 'users/sign_in'
     click_link 'Sign In'
-    fill_in 'E-mail', with: user.email
-    fill_in 'Password', with: user.password
+    fill_in 'E-mail',         with: user.email
+    fill_in 'Password',       with: user.password
     click_button 'Sign In'
 
     click_link 'Share some kindness!'
-    fill_in 'Title', with: 'Coffee Surprise'
-    fill_in 'Description', with: 'Paid for the person behind me at Starbucks.'
+    fill_in 'Title',          with: 'Coffee Surprise'
+    fill_in 'Description',    with: 'Paid for the person behind me at Starbucks.'
+    save_and_open_page
+    select 'Community',       from: 'Category'
     click_button 'Share'
 
     expect(page).to have_content('Success!')
     expect(page).to have_content('Sign Out')
     expect(page).to have_content('Title')
     expect(page).to have_content('Description')
+    expect(page).to have_content('Category')
     expect(Post.all.count).to eq(1)
     current_path.should eq(posts_path)
   end
