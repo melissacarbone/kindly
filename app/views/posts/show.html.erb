@@ -12,6 +12,12 @@
   <%= @post.created_at %>
 </p>
 
+<p>
+  <% if @inspiration > 0 %>
+    This post inspired <%= pluralize(@inspiration, 'act') %> of kindness! :):):)
+  <% end %>
+</p>
+
 <% if @post.user_id != current_user.id %>
   <li><%= link_to 'Inspired by this!', new_post_post_path(@post) %></li>
 <% end %>
