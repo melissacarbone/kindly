@@ -12,7 +12,8 @@ feature 'User adds a post' do
   # *My posts should be associated with my account
 
   scenario 'an authenticated user adds a post with valid attributes' do
-    category = Category.create(name: 'Community')
+    category1 = Category.create(name: 'Community')
+    category2 = Category.create(name: 'Family')
     user = FactoryGirl.create(:user)
     visit 'users/sign_in'
     click_link 'Sign In'
@@ -23,7 +24,7 @@ feature 'User adds a post' do
     click_link 'Share some kindness!'
     fill_in 'Title',          with: 'Coffee Surprise'
     fill_in 'Description',    with: 'Paid for the person behind me at Starbucks.'
-    select category.name,          from: 'Category'
+    select category1.name,    from: 'Category'
     click_button 'Share'
 
     expect(page).to have_content('Success!')

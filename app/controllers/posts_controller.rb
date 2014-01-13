@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
-  before_filter :authenticate_user!,
-    only: [:new, :index, :show]
+  before_filter :authenticate_user!
 
   def index
     if params[:user_id]
@@ -39,6 +38,21 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @inspiration = Post.inspired_post_count(@post.id)
+  end
+
+  def edit
+    @post = Post.find(params[:id])
+    @post.user_id = current_user.id
+  end
+
+  def update
+    @post = Post.find(params[:id])
+
+    if @post.update(post_params)
+      redirect_to posts_path, notice: 'Updated Successfully!'
+    else
+      render 'edit', notice: 'Post could not be updated'
+    end
   end
 
   private

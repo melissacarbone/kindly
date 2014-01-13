@@ -6,7 +6,7 @@ Kindly::Application.routes.draw do
   end
 
   resources :posts do
-    resources :posts, only:[:new, :create]
+     resources :posts
   end
 
 
