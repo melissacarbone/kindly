@@ -42,17 +42,18 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
-    @post.user_id = current_user.id
+    unless @post.user_id == current_user.id
+      redirect_to posts_path, notice: 'Access Denied!'
+    end
   end
 
   def update
     @post = Post.find(params[:id])
-
-    if @post.update(post_params)
-      redirect_to posts_path, notice: 'Updated Successfully!'
-    else
-      render 'edit', notice: 'Post could not be updated'
-    end
+      if @post.update(post_params)
+        redirect_to posts_path, notice: 'Updated Successfully!'
+      else
+        render 'edit', notice: 'Post could not be updated'
+      end
   end
 
   private
