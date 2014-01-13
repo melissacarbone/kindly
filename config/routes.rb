@@ -12,7 +12,7 @@ Kindly::Application.routes.draw do
 
   resources :contacts, only:[:new, :index, :create]
 
-  resources :categories
+  resources :categories, only:[:new, :create, :index]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
