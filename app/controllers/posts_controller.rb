@@ -31,6 +31,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_path, notice: 'Success!'
     else
+      @target = @post
       render 'new', notice: 'Post could not be saved'
     end
   end

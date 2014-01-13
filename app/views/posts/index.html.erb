@@ -5,6 +5,19 @@
     <h1>Recent Random Acts of Kindness</h1>
     <%= link_to 'My Posts', @link_path %>
   <% end %>
+
+<!--   <%= form_tag(posts_path, method: :get) do %>
+  <%= field_set_tag 'Search Categories' do %>
+    <%= hidden_field_tag 'filter', 'search' %>
+
+    <div>
+      <%= label_tag 'search', 'Search' %>
+      <%= text_field_tag 'search', params[:query], placeholder: 'Enter Category or Key Word', size: 50 %>
+    </div>
+
+    <div><%= submit_tag 'Filter' %></div>
+  <% end %>
+<% end %> -->
     <table>
       <thead>
         <tr>
@@ -22,7 +35,7 @@
            <td><%= post.description %></td>
            <td><%= post.created_at %></td>
            <td><%= User.find(post.user_id).email %></td>
-           <td><%= post.category %></td>
+           <td><%= post.category.name %></td>
            <td><%= link_to 'Show', post %></td>
         </tr>
       <% end %>
