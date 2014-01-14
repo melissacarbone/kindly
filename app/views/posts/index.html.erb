@@ -23,7 +23,7 @@
         <tr>
           <th>Title:</th>
           <th>Description:</th>
-          <th></th>
+          <th>Location:</th>
           <th>Posted by:</th>
           <th>Category:</th>
         </tr>
@@ -33,7 +33,7 @@
         <tr>
            <td><%= post.title %></td>
            <td><%= post.description %></td>
-           <td><%= post.created_at %></td>
+           <td><%= post.location %></td>
            <td><%= User.find(post.user_id).email %></td>
            <td><%= post.category.name %></td>
            <td><%= link_to 'View', post %></td>
