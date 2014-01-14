@@ -6,41 +6,29 @@
     <%= link_to 'My Posts', @link_path %>
   <% end %>
 
-<!--   <%= form_tag(posts_path, method: :get) do %>
-  <%= field_set_tag 'Search Categories' do %>
-    <%= hidden_field_tag 'filter', 'search' %>
-
-    <div>
-      <%= label_tag 'search', 'Search' %>
-      <%= text_field_tag 'search', params[:query], placeholder: 'Enter Category or Key Word', size: 50 %>
-    </div>
-
-    <div><%= submit_tag 'Filter' %></div>
-  <% end %>
-<% end %> -->
     <table>
       <thead>
         <tr>
+          <th>Posted by:</th>
           <th>Title:</th>
           <th>Description:</th>
           <th>Location:</th>
-          <th>Posted by:</th>
           <th>Category:</th>
         </tr>
       </thead>
 
       <% @posts.each do |post| %>
         <tr>
-           <td><%= post.title %></td>
-           <td><%= post.description %></td>
-           <td><%= post.location %></td>
-           <td><%= User.find(post.user_id).email %></td>
-           <td><%= post.category.name %></td>
-           <td><%= link_to 'View', post %></td>
-           <% if post.user_id == current_user.id %>
-            <td><%= link_to 'Edit', edit_post_path(post) %></td>
-            <td><%= link_to 'Delete', post, method: :delete %></td>
-           <% end %>
+          <td><%= User.find(post.user_id).email %></td>
+          <td><%= post.title %></td>
+          <td><%= post.description %></td>
+          <td><%= post.location %></td>
+          <td><%= post.category.name %></td>
+          <td><%= link_to 'View', post %></td>
+            <% if post.user_id == current_user.id %>
+              <td><%= link_to 'Edit', edit_post_path(post) %></td>
+              <td><%= link_to 'Delete', post, method: :delete %></td>
+            <% end %>
         </tr>
       <% end %>
     </table>

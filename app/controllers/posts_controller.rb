@@ -3,10 +3,10 @@ class PostsController < ApplicationController
 
   def index
     if params[:user_id]
-      @posts = Post.where(user_id: params[:user_id])
+      @posts = Post.where(user_id: params[:user_id]).order(date_completed: :desc, created_at: :desc)
       @link_path = posts_path
     else
-      @posts = Post.order('created_at DESC').limit(10)
+      @posts = Post.order(date_completed: :desc, created_at: :desc).limit(10)
       @link_path = user_posts_path(current_user)
     end
   end
@@ -68,6 +68,6 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :description, :location, :category_id)
+    params.require(:post).permit(:title, :description, :location, :category_id, :date_completed)
   end
 end
