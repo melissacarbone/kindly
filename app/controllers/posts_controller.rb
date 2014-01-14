@@ -56,6 +56,15 @@ class PostsController < ApplicationController
       end
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    unless @post.user_id == current_user.id
+      redirect_to posts_path, notice: 'Access Denied!'
+    end
+    @post.destroy
+    redirect_to posts_path, notice: 'Post was successfully deleted'
+  end
+
   private
 
   def post_params
