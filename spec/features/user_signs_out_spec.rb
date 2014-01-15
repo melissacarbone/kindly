@@ -11,14 +11,8 @@ feature 'User signs out' do
   # *When I am signed out I will not have access to my account information
 
   scenario 'authenticated user signs out' do
-    user = FactoryGirl.create(:user)
-    visit root_path
-    click_link 'Sign In'
-    fill_in 'E-mail', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    sign_in
     click_link 'Sign Out'
-
 
     expect(page).to have_content("Sign In")
     expect(page).to have_content("Signed Out Successfully.")

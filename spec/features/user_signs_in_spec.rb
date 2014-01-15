@@ -12,12 +12,7 @@ feature 'User signs in' do
   # *I must be directed to my index page when I sign into my account.
 
   scenario 'an existing user specifies a valid email and password' do
-    user = FactoryGirl.create(:user)
-    visit root_path
-    click_link 'Sign In'
-    fill_in 'E-mail', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    sign_in
 
     expect(page).to have_content('Welcome Back!')
     expect(page).to have_content('Sign Out')

@@ -14,12 +14,7 @@ feature 'User adds a post' do
   scenario 'an authenticated user adds a post with valid attributes' do
     category1 = Category.create(name: 'Community')
     category2 = Category.create(name: 'Family')
-    user = FactoryGirl.create(:user)
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'E-mail',         with: user.email
-    fill_in 'Password',       with: user.password
-    click_button 'Sign In'
+    sign_in
 
     click_link 'Share some kindness!'
     fill_in 'Title',          with: 'Coffee Surprise'
@@ -37,13 +32,8 @@ feature 'User adds a post' do
   end
 
   scenario 'an authenticated user adds a post with invalid attributes' do
-    user = FactoryGirl.create(:user)
     category = Category.create(name: 'Community')
-    visit 'users/sign_in'
-    click_link 'Sign In'
-    fill_in 'E-mail', with: user.email
-    fill_in 'Password', with: user.password
-    click_button 'Sign In'
+    sign_in
 
     click_link 'Share some kindness!'
     click_button 'Share'

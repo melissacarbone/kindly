@@ -11,14 +11,7 @@ feature 'User signs up' do
   # *If I specify all of the required information, my account will be created and I can track my random acts of kindness.
 
   scenario 'specifying valid and required information' do
-    visit root_path
-    click_link 'Sign Up'
-    fill_in 'First Name', with: 'Jane'
-    fill_in 'Last Name', with: 'Smith'
-    fill_in 'E-mail', with: 'user@example.com'
-    fill_in 'user_password', with: 'password'
-    fill_in 'Password Confirmation', with: 'password'
-    click_button 'Sign Up'
+    sign_up
 
     expect(page).to have_content('You have successfully created an account!')
     expect(page).to have_content('Sign Out')
