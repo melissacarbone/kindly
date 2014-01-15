@@ -8,12 +8,13 @@ class Post < ActiveRecord::Base
   belongs_to :parent,
     class_name: 'Post'
 
-  def self.inspired_post_count(params)
-    where('parent_id = ?', params).count
+    def inspired_post_count
+    count = 0
+    children = Post.where('parent_id = ?', id)
+    count += children.count
+    children.each do |child|
+      count += child.inspired_post_count
+    end
+    count
   end
-
-  # def self.search(query)
-
-  #   where('category ilike ? OR description ilike ?', "%#{query}%", "%#{query}%")
-  # end
 end
