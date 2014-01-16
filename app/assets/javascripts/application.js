@@ -13,7 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require turbolinks
 //= require_tree .
+//= require pickadate/picker
+//= require pickadate/picker.date
 
-$(function(){ $(document).foundation(); });
+$(function(){ $(document).foundation();
+

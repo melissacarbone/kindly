@@ -12,30 +12,40 @@
     </div>
   <% end %>
 
-<%= form_for @post do |f| %>
-  <p>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  </p>
-  <p>
-  <%= f.label :description %>
-  <%= f.text_area :description %>
-  </p>
-    <%= f.label :location %>
-    <%= f.text_field :location %>
-  <p>
-  <%= f.label :category_id %>
-  <%= f.collection_select(:category_id,
-                          Category.all,
-                          :id,
-                          :name,
-                          {include_blank: true} )
-  %>
-  <p>
-  <p>
-    <%= f.label :date_completed %>
-    <%= f.text_field :date_completed %>
-  </p>
+<div class='small-4 columns'>
+  <%= form_for @post do |f| %>
+    <p>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    </p>
+    <p>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+    </p>
+      <%= f.label :location %>
+      <%= f.text_field :location %>
+    <p>
+    <%= f.label :category_id %>
+    <%= f.collection_select(:category_id,
+                            Category.all,
+                            :id,
+                            :name,
+                            {include_blank: true} )
+    %>
+    <p>
+    <p>
+      <%= f.label :date_completed %>
+      <%= f.text_field :date_completed, placeholder: 'Click to select date', class: 'datepicker' %>
+    </p>
 
-  <%= f.submit "Update" %>
-<% end %>
+    <%= f.submit "Update" %>
+  <% end %>
+
+  <% content_for :extra_footer do %>
+    <script type="text/javascript">
+    $(function(){
+      $('.datepicker').pickadate();
+    })
+    </script>
+  <% end %>
+</div>
