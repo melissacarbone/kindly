@@ -36,6 +36,7 @@ end
 
 gem 'simple_form'
 gem 'devise'
+gem 'foundation-rails'
 
 group :development do
   gem 'mailcatcher'

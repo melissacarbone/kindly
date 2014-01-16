@@ -5,7 +5,7 @@ feature 'User adds a post' do
   # I want to input an act of kindness that I completed
   # So that it can be recorded for later viewing
 
-  # *I will be required to select a date, category, and enter a  title and text description of the activity.
+  # *I will be required to select a date, category, and enter a  title and text Details of the activity.
   # *If I do not include all required fields, I will not be able to save my activity and I will be presented with an error message.
   # *If I complete all required fields I will be able to save my activity for later viewing.
   # *If I am not signed in I cannot add posts
@@ -18,14 +18,14 @@ feature 'User adds a post' do
 
     click_link 'Share some kindness!'
     fill_in 'Title',          with: 'Coffee Surprise'
-    fill_in 'Description',    with: 'Paid for the person behind me at Starbucks.'
+    fill_in 'Details',    with: 'Paid for the person behind me at Starbucks.'
     select category1.name,    from: 'Category'
     click_button 'Share'
 
     expect(page).to have_content('Success!')
     expect(page).to have_content('Sign Out')
     expect(page).to have_content('Title')
-    expect(page).to have_content('Description')
+    expect(page).to have_content('Details')
     expect(page).to have_content('Category')
     expect(Post.all.count).to eq(1)
     current_path.should eq(posts_path)
@@ -39,7 +39,7 @@ feature 'User adds a post' do
     click_button 'Share'
 
     expect(page).to have_content("Title can't be blank")
-    expect(page).to have_content("Description can't be blank")
+    expect(page).to have_content("Details can't be blank")
     expect(page).to_not have_content('Success!')
   end
 
@@ -49,7 +49,7 @@ feature 'User adds a post' do
     expect(page).to have_content('Sign In')
     expect(page).to_not have_content('Sign Out')
     expect(page).to_not have_content('Title')
-    expect(page).to_not have_content('Description')
+    expect(page).to_not have_content('Details')
 
   end
 end

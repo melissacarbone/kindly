@@ -23,7 +23,7 @@ module Features
       category = Category.create(name: 'Community')
       click_link 'Share some kindness!'
       fill_in 'Title',          with: 'Coffee Surprise'
-      fill_in 'Description',    with: 'Paid for the person behind me at Starbucks.'
+      fill_in 'Details',    with: 'Paid for the person behind me at Starbucks.'
       select 'Community',    from: 'Category'
       click_button 'Share'
     end

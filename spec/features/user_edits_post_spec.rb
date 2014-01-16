@@ -9,7 +9,7 @@ feature 'User edits a post' do
     click_link 'My Posts'
     click_link 'Edit'
     fill_in 'Title', with: 'Coffee'
-    fill_in 'Description', with: 'Paid for coffee'
+    fill_in 'Details', with: 'Paid for coffee'
     select 'Community', from: 'Category'
     click_button 'Update'
 
@@ -22,7 +22,7 @@ feature 'User edits a post' do
 
     click_link 'My Posts'
     click_link 'Edit'
-    fill_in 'Description', with: ''
+    fill_in 'Details', with: ''
     click_button 'Update'
 
     expect(page).to_not have_content('Updated Successfully!')

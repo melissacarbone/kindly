@@ -7,24 +7,70 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <nav>
-    <%- if user_signed_in? -%>
-      <h2>Kindly</h2>
-      <ul>
-        <li>Signed in as: <%= current_user.email %> </li>
-        <li><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
-        <li><%= link_to 'Share some kindness!', new_post_path %></li>
-      <%- else %>
-      <h2>Welcome to Kindly!</h2>
-        <li><%= link_to 'Sign In', new_user_session_path %></li>
-        <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-      </ul>
-    <% end %>
-  </nav>
-<%= yield %>
 
+<nav class="top-bar" data-topbar>
+  <%- if user_signed_in? -%>
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="/">Kindly</a></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="#">Menu</a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="active"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
+      <li class="has-dropdown">
+        <a href="#">MENU</a>
+        <ul class="dropdown">
+          <li><%= link_to 'Share some kindness!', new_post_path %></li>
+          <li><%= link_to 'Share some kindness!', new_post_path %></li>
+          <li><%= link_to 'Share some kindness!', new_post_path %></li>
+        </ul>
+      </li>
+    </ul>
+
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li>Signed in as: <%= current_user.email %> </li>
+    </ul>
+  </section>
+  <%- else %>
+    <ul class="title-area">
+    <li class="name">
+      <h1><a href="/">Welcome to Kindly!</a></h1>
+    </li>
+    <li class="toggle-topbar menu-icon"><a href="/">Menu</a></li>
+  </ul>
+
+  <section class="top-bar-section">
+    <!-- Right Nav Section -->
+    <ul class="right">
+      <li class="active"><%= link_to 'Contact Us!', new_contact_path %></li>
+      <li class="has-dropdown">
+        <!-- <a href="#">Right Button with Dropdown</a> -->
+        <ul class="dropdown">
+          <!-- <li><a href="#">First link in dropdown</a></li> -->
+        </ul>
+      </li>
+    </ul>
+
+    <!-- Left Nav Section -->
+    <ul class="left">
+      <li><%= link_to 'Sign In', new_user_session_path %></li>
+      <li><%= link_to 'Sign Up', new_user_registration_path %></li>
+      <li></li>
+
+    </ul>
+  </section>
+  <% end %>
+</nav>
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
+<%= yield %>
+
+
 
 </body>
 </html>
