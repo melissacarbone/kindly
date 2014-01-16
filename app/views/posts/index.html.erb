@@ -19,6 +19,11 @@
 
       <% @posts.each do |post| %>
         <tr>
+          <% if post.date_completed == nil %>
+            <td><%= post.created_at.strftime('%B, %d, %Y') %></td>
+          <% else %>
+            <td><%= post.date_completed.strftime('%B, %d, %Y') %></td>
+          <% end %>
           <td><%= User.find(post.user_id).email %></td>
           <td><%= post.title %></td>
           <td><%= post.description %></td>

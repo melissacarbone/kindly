@@ -14,11 +14,11 @@
 
 <p>
   <strong>Date Created:</strong>
-  <%= @post.created_at %>
+  <%= @post.created_at.strftime('%B, %d, %Y') %>
 </p>
 <p>
   <strong>Date Completed:</strong>
-  <%= @post.date_completed %>
+  <%= @post.date_completed.strftime('%B, %d, %Y') %>
 </p>
 
 
