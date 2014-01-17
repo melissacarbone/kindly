@@ -8,6 +8,7 @@
 <body>
 
 <nav class="top-bar" data-topbar>
+
   <%- if user_signed_in? -%>
   <ul class="title-area">
     <li class="name">
@@ -65,8 +66,13 @@
   </section>
   <% end %>
 </nav>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
+
+  <div class="background">
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  </div>
+
+
 <%= yield %>
 <%= yield :extra_footer %>
 <%= javascript_include_tag "application" %>
