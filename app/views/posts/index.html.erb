@@ -1,10 +1,10 @@
-  <% if params[:user_id] %>
+<div class='row'>
+  <div class='small-12 columns background'>
+    <% if params[:user_id] %>
     <h1>My Random Acts of Kindness</h1>
-    <%= link_to 'Recent Posts', @link_path %>
-  <% else %>
+    <% else %>
     <h1>Recent Random Acts of Kindness</h1>
-    <%= link_to 'My Posts', @link_path %>
-  <% end %>
+    <% end %>
 
     <table>
       <thead>
@@ -19,22 +19,24 @@
       </thead>
 
       <% @posts.each do |post| %>
-        <tr>
-          <% if post.date_completed == nil %>
-            <td><%= post.created_at.strftime('%B, %d, %Y') %></td>
-          <% else %>
-            <td><%= post.date_completed.strftime('%B, %d, %Y') %></td>
-          <% end %>
-          <td><%= User.find(post.user_id).email %></td>
-          <td><%= post.title %></td>
-          <td><%= post.description %></td>
-          <td><%= post.location %></td>
-          <td><%= post.category.name %></td>
-          <td><%= link_to 'View', post %></td>
-            <% if post.user_id == current_user.id %>
-              <td><%= link_to 'Edit', edit_post_path(post) %></td>
-              <td><%= link_to 'Delete', post, method: :delete %></td>
-            <% end %>
-        </tr>
+      <tr>
+        <% if post.date_completed == nil %>
+        <td><%= post.created_at.strftime('%B, %d, %Y') %></td>
+        <% else %>
+        <td><%= post.date_completed.strftime('%B, %d, %Y') %></td>
+        <% end %>
+        <td><%= User.find(post.user_id).email %></td>
+        <td><%= post.title %></td>
+        <td><%= post.description %></td>
+        <td><%= post.location %></td>
+        <td><%= post.category.name %></td>
+        <td><%= link_to 'View', post %></td>
+        <% if post.user_id == current_user.id %>
+        <td><%= link_to 'Edit', edit_post_path(post) %></td>
+        <td><%= link_to 'Delete', post, method: :delete %></td>
+        <% end %>
+      </tr>
       <% end %>
     </table>
+  </div>
+</div>

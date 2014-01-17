@@ -1,41 +1,45 @@
-<h1>Pledge your Random Act of Kindness!</h1>
-<h2>Activities created here will only be viewable on your personal page.<br>Once they are completed, enter the date and any additional details to make it public and inspire others!</h2>
-<%= notice %>
-<% if @post.errors.any? %>
+<div class='row'>
+  <div class='small-9 columns background'>
+    <h2>Pledge your Random Act of Kindness!</h2>
+    <p>Activities created here will only be viewable on your personal page until completed.</p>
+    <%= notice %>
+    <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this event from being saved:</h2>
 
       <ul>
-      <% @post.errors.full_messages.each do |msg| %>
+        <% @post.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
-      <% end %>
+        <% end %>
       </ul>
     </div>
-  <% end %>
+    <% end %>
 
-<%= form_for @target do |f| %>
-  <p>
-  <%= f.label :title %>
-  <%= f.text_field :title %>
-  </p>
-  <p>
-  <%= f.label :description, 'Details' %>
-  <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :location, 'City, State:' %>
-    <%= f.text_field :location %>
-  </p>
-  <p>
-  <%= f.label :category_id %>
-  <%= f.collection_select(:category_id,
-                          Category.all,
-                          :id,
-                          :name,
-                          {include_blank: true} )
-  %>
-  <p>
+    <%= form_for @target do |f| %>
+    <p>
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </p>
+    <p>
+      <%= f.label :description, 'Details' %>
+      <%= f.text_area :description %>
+    </p>
+    <p>
+      <%= f.label :location, 'City, State:' %>
+      <%= f.text_field :location %>
+    </p>
+    <p>
+      <%= f.label :category_id %>
+      <%= f.collection_select(:category_id,
+        Category.all,
+        :id,
+        :name,
+        {include_blank: true} )
+        %>
+        <p>
 
-  <%= f.submit "Share" %>
-<% end %>
-<%= link_to 'Back To Recent Posts', posts_path %>
+          <%= f.submit "Share" %>
+          <% end %>
+
+        </div>
+      </div>

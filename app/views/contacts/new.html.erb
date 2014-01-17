@@ -1,31 +1,35 @@
-<div>
-  <h1>We'd love to hear from you...</h1>
-</div>
+<div class='row'>
+  <div class='small-8 columns background'>
+    <h1>We'd love to hear from you...</h1>
 
-  <% if @contact.errors.any? %>
+
+    <% if @contact.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this event from being saved:</h2>
 
       <ul>
-      <% @contact.errors.full_messages.each do |msg| %>
+        <% @contact.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
-      <% end %>
+        <% end %>
       </ul>
     </div>
-  <% end %>
-<div class="small-4 columns">
-<%= form_for @contact do |f| %>
-  <%= f.label :email %>
-  <%= f.text_field :email %><br>
-  <%= f.label :subject %>
-  <%= f.text_field :subject %><br>
-  <%= f.label :description, 'Comments' %>
-  <%= f.text_area :description %><br>
-  <%= f.label :first_name, 'First Name' %>
-  <%= f.text_field :first_name %><br>
-  <%= f.label :last_name, 'Last Name' %>
-  <%= f.text_field :last_name %><br>
-  <%= f.button "Send Form" %>
-</div>
+    <% end %>
+    <div>
+      <%= form_for @contact do |f| %>
+      <%= f.label :email %>
+      <%= f.text_field :email %><br>
+      <%= f.label :subject %>
+      <%= f.text_field :subject %><br>
+      <%= f.label :description, 'Comments' %>
+      <%= f.text_area :description %><br>
+      <%= f.label :first_name, 'First Name' %>
+      <%= f.text_field :first_name %><br>
+      <%= f.label :last_name, 'Last Name' %>
+      <%= f.text_field :last_name %><br>
+      <%= f.button "Send Form" %>
+    </div>
 
-<% end %>
+    <% end %>
+
+  </div>
+</div>

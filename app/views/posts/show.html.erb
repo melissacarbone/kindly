@@ -1,39 +1,45 @@
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<div class='row'>
+  <div class='small-6 columns background'>
+    <p>
+      <strong>Title:</strong>
+      <%= @post.title %>
+    </p>
 
-<p>
-  <strong>Details:</strong>
-  <%= @post.description %>
-</p>
-<p>
-  <strong>Category:</strong>
-  <%= Category.find(@post.category_id).name %>
-</p>
+    <p>
+      <strong>Details:</strong>
+      <%= @post.description %>
+    </p>
+    <p>
+      <strong>Category:</strong>
+      <%= Category.find(@post.category_id).name %>
+    </p>
 
-<p>
-  <strong>Date Created:</strong>
-  <%= @post.created_at.strftime('%B, %d, %Y') %>
-</p>
-<p>
-  <strong>Date Completed:</strong>
-  <%= @post.date_completed.strftime('%B, %d, %Y') %>
-</p>
+    <p>
+      <% if @post.date_completed == nil %>
+      <strong>Date Created:</strong>
+      <%= @post.created_at.strftime('%B, %d, %Y') %>
+    </p>
+      <% else %>
+    <p>
+      <strong>Date Completed:</strong>
+      <%= @post.date_completed.strftime('%B, %d, %Y') %>
+    </p>
+    <% end %>
 
 
-<p>
-  <% if @inspiration > 0 %>
-    This post inspired <%= pluralize(@inspiration, 'act') %> of kindness! :):):)
-  <% end %>
-</p>
+    <p>
+      <% if @inspiration > 0 %>
+      This post inspired <%= pluralize(@inspiration, 'act') %> of kindness! :):):)
+      <% end %>
+    </p>
 
-<p>
-<% if @post.user_id != current_user.id %>
-  <%= link_to 'Pay it Forward!', new_post_post_path(@post) %></li>
-<% end %>
-</p>
-<p>
-  <%= link_to 'Back To Recent Posts', posts_path %>
-</p>
+    <p>
+      <% if @post.user_id != current_user.id %>
+      <%= link_to 'Pay it Forward!', new_post_post_path(@post) %></li>
+      <% end %>
+    </p>
+    <p>
 
+    </p>
+  </div>
+</div>

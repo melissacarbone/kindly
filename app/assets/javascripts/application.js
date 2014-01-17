@@ -13,9 +13,15 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require backstretch.min
 //= require_tree .
 //= require pickadate/picker
 //= require pickadate/picker.date
 
-$(function(){ $(document).foundation();
+$(function(){ $(document).foundation()});
+
+$(function(){
+  // $(document).foundation();
+  $.backstretch('https://dl.dropboxusercontent.com/u/14594743/bg1.JPG');
+})
 

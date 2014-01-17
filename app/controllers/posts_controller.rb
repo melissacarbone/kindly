@@ -4,10 +4,8 @@ class PostsController < ApplicationController
   def index
     if params[:user_id]
       @posts = Post.where(user_id: params[:user_id]).order(date_completed: :desc, created_at: :desc)
-      @link_path = posts_path
     else
       @posts = Post.order(date_completed: :desc, created_at: :desc).where('date_completed IS NOT NULL').limit(10)
-      @link_path = user_posts_path(current_user)
     end
   end
 

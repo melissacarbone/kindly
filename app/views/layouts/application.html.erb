@@ -3,7 +3,6 @@
 <head>
   <title>Kindly</title>
   <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -25,14 +24,14 @@
         <a href="#">MENU</a>
         <ul class="dropdown">
           <li><%= link_to 'Share some kindness!', new_post_path %></li>
-          <li><%= link_to 'Share some kindness!', new_post_path %></li>
-          <li><%= link_to 'Share some kindness!', new_post_path %></li>
+          <li><%= link_to 'See Recent Posts', posts_path %></li>
+          <li><%= link_to 'My Posts', user_posts_path(current_user) %></li>
         </ul>
       </li>
     </ul>
 
     <!-- Left Nav Section -->
-    <ul class="left">
+    <ul class="left current_user">
       <li>Signed in as: <%= current_user.email %> </li>
     </ul>
   </section>
@@ -70,7 +69,7 @@
   <p class="alert"><%= alert %></p>
 <%= yield %>
 <%= yield :extra_footer %>
-
+<%= javascript_include_tag "application" %>
 
 
 </body>

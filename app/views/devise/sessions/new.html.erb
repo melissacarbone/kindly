@@ -1,15 +1,19 @@
-<h2>Sign in</h2>
+<div class='row'>
+  <div class='small-4 columns background'>
+  <h2>Sign in</h2>
 
-<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div class="form-inputs small-4 columns">
-    <%= f.input :email, label: 'E-mail', :required => false, :autofocus => true %>
-    <%= f.input :password, :required => false %>
-    <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
-    <div class="form-actions">
-      <%= f.button :submit, "Sign In" %>
+  <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+
+    <div class="form-inputs">
+      <%= f.input :email, label: 'E-mail', :required => false, :autofocus => true %>
+      <%= f.input :password, :required => false %>
+      <%= f.input :remember_me, :as => :boolean if devise_mapping.rememberable? %>
+      <div class="form-actions">
+        <%= f.button :submit, "Sign In" %>
+      </div>
     </div>
+  <% end %>
   </div>
+</div>
 
-
-<% end %>
 
