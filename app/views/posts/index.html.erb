@@ -15,6 +15,10 @@
           <th>Details:</th>
           <th>Location:</th>
           <th>Category:</th>
+          <% if params[:user_id] %>
+            <th>Status:</th>
+          <% end %>
+          <th style='text-align:center' colspan=3>Actions</th>
         </tr>
       </thead>
 
@@ -30,6 +34,9 @@
         <td><%= post.description %></td>
         <td><%= post.location %></td>
         <td><%= post.category.name %></td>
+        <% if params[:user_id] %>
+          <td><%= post.date_completed.nil? ? "Not completed" : "Completed" %></td>
+        <% end %>
         <td><%= link_to 'View', post %></td>
         <% if post.user_id == current_user.id %>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
