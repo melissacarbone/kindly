@@ -1,52 +1,57 @@
-<h1>Edit post</h1>
-<%= notice %>
-<% if @post.errors.any? %>
+<div class='row'>
+  <div class='small-9 columns background'>
+    <h1>Edit Post</h1>
+    <p>Update the details of your Random Act of Kindness!  Don't forget to enter the Date Completed:</p>
+    <%= notice %>
+    <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@post.errors.count, "error") %> prohibited this event from being saved:</h2>
 
       <ul>
-      <% @post.errors.full_messages.each do |msg| %>
+        <% @post.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
-      <% end %>
+        <% end %>
       </ul>
     </div>
-  <% end %>
+    <% end %>
 
-<div class='small-4 columns'>
-  <%= form_for @post do |f| %>
-    <p>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-    </p>
-    <p>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-    </p>
-      <%= f.label :location %>
+    <div>
+      <%= form_for @post do |f| %>
+      <p>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+      </p>
+      <p>
+        <%= f.label :description, 'Details' %>
+        <%= f.text_area :description %>
+      </p>
+      <%= f.label :location, 'Where do you live?' %>
       <%= f.text_field :location %>
-    <p>
-    <%= f.label :category_id %>
-    <%= f.collection_select(:category_id,
-                            Category.all,
-                            :id,
-                            :name,
-                            {include_blank: true} )
-    %>
-    <p>
-    <p>
-      <%= f.label :date_completed %>
-      <%= f.text_field :date_completed, placeholder: 'Click to select date', class: 'datepicker' %>
-    </p>
+      <p>
+        <%= f.label :category_id %>
+        <%= f.collection_select(:category_id,
+          Category.all,
+          :id,
+          :name,
+          {include_blank: true} )
+          %>
+          <p>
+            <p>
+              <%= f.label :date_completed %>
+              <%= f.text_field :date_completed, placeholder: 'Click to select date', class: 'datepicker' %>
+            </p>
 
-    <%= f.submit "Update" %>
-  <% end %>
+            <%= f.button "Update" %>
+            <% end %>
 
-  <% content_for :extra_footer do %>
-    <script type="text/javascript">
-    $(function(){
-      $('.datepicker').pickadate();
-    })
-    </script>
-  <% end %>
-</div>
-
+            <% content_for :extra_footer do %>
+            <script type="text/javascript">
+              $(function(){
+                $('.datepicker').pickadate( {
+                  max: true});
+              })
+            </script>
+            <% end %>
+          </div>
+        </div>
+      </div>

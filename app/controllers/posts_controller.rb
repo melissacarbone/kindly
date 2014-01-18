@@ -26,10 +26,12 @@ class PostsController < ApplicationController
     @post.parent = Post.find(params[:post_id]) if params[:post_id]
 
     if @post.save
-      redirect_to posts_path, notice: 'Success!'
+      flash[:notice] = "Post was successfully submitted!"
+      redirect_to posts_path
     else
+      flash[:notice] = "Post could not be saved."
       @target = @post
-      render 'new', notice: 'Post could not be saved'
+      render 'new'
     end
   end
 
@@ -39,28 +41,33 @@ class PostsController < ApplicationController
   end
 
   def edit
+    flash[:notice] = "Access Denied"
     @post = Post.find(params[:id])
     unless @post.user_id == current_user.id
-      redirect_to posts_path, notice: 'Access Denied!'
+      redirect_to posts_path
     end
   end
 
   def update
     @post = Post.find(params[:id])
       if @post.update(post_params)
-        redirect_to posts_path, notice: 'Updated Successfully!'
+        flash[:notice] = "Updated Successfully!"
+        redirect_to posts_path
       else
-        render 'edit', notice: 'Post could not be updated'
+        flash[:notice] = "Post could not be updated."
+        render 'edit'
       end
   end
 
   def destroy
     @post = Post.find(params[:id])
     unless @post.user_id == current_user.id
-      redirect_to posts_path, notice: 'Access Denied!'
+      flash[:notice] = "Access Denied"
+      redirect_to posts_path
     end
     @post.destroy
-    redirect_to posts_path, notice: 'Post was successfully deleted'
+    flash[:notice] = "Post was successfully deleted."
+    redirect_to posts_path
   end
 
   private

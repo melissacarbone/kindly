@@ -20,7 +20,7 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-      <li class="active"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
+      <li class="current_user">Signed in as: <%= current_user.email %> </li>
       <li class="has-dropdown">
         <a href="#">MENU</a>
         <ul class="dropdown">
@@ -32,8 +32,9 @@
     </ul>
 
     <!-- Left Nav Section -->
-    <ul class="left current_user">
-      <li>Signed in as: <%= current_user.email %> </li>
+    <ul class="left">
+      <li> </li>
+      <li class="active"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete %></li>
     </ul>
   </section>
   <%- else %>
@@ -66,17 +67,25 @@
   </section>
   <% end %>
 </nav>
+<div>
+  <% if flash[:error] %>
+    <%= content_tag :div, :id => "flash_name", :class => "alert-box error" do %>
+      <%= flash[:error] %>
+    <% end %>
+  <% end %>
 
-  <div class="background">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  </div>
-
+  <% if flash[:notice] %>
+    <%= content_tag :div, :id => "flash_name", :class => "alert-box success" do %>
+      <%= flash[:notice] %>
+    <% end %>
+  <% end %>
+</div>
+<p>
+</p>
 
 <%= yield %>
-<%= yield :extra_footer %>
 <%= javascript_include_tag "application" %>
-
+<%= yield :extra_footer %>
 
 </body>
 </html>

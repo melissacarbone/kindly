@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
   validates_presence_of :description
   validates_presence_of :category_id
 
+
   belongs_to :user
   belongs_to :category
   belongs_to :parent,

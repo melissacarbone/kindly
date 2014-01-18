@@ -17,9 +17,7 @@ feature 'User views recent posts from other users', %Q{
     visit user_posts_path(current_user)
     click_link 'Recent Posts'
 
-    expect(page).to have_content('My Posts')
     expect(page).to have_content('Recent Random Acts of Kindness')
-    expect(page).to_not have_content('Recent Posts')
     expect(page).to_not have_content('My Random Acts of Kindness')
 
   end

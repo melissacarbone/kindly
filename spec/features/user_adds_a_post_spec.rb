@@ -22,7 +22,7 @@ feature 'User adds a post' do
     select category1.name,    from: 'Category'
     click_button 'Share'
 
-    expect(page).to have_content('Success!')
+    expect(page).to have_content('Post was successfully submitted!')
     expect(page).to have_content('Sign Out')
     expect(page).to have_content('Title')
     expect(page).to have_content('Details')
@@ -39,8 +39,8 @@ feature 'User adds a post' do
     click_button 'Share'
 
     expect(page).to have_content("Title can't be blank")
-    expect(page).to have_content("Details can't be blank")
-    expect(page).to_not have_content('Success!')
+    expect(page).to have_content("Description can't be blank")
+    expect(page).to_not have_content('Post was successfully submitted!')
   end
 
   scenario 'as an unauthenticated user' do

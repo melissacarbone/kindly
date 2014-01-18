@@ -7,7 +7,7 @@ feature 'User sends a contact form' do
     click_link 'Contact Us!'
     fill_in 'Email', with: 'user@example.com'
     fill_in 'Subject', with: 'Hello'
-    fill_in 'Description', with: 'I like this site.'
+    fill_in 'Comments', with: 'I like this site.'
     fill_in 'First Name', with: 'John'
     fill_in 'Last Name', with: 'Smith'
     click_button 'Send Form'
