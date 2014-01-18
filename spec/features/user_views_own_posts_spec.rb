@@ -17,7 +17,7 @@ feature 'User views their own posts', %Q{
     fill_in 'E-mail', with: current_user.email
     fill_in 'Password', with: current_user.password
     click_button 'Sign In'
-    click_link 'My Posts'
+     click_link 'My Posts'
 
     post = FactoryGirl.create(:post)
     post.user_id = current_user.id
