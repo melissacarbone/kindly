@@ -18,14 +18,14 @@
     <%= form_for @target do |f| %>
     <p>
       <%= f.label :title %>
-      <%= f.text_field :title, placeholder: 'e.g. Plant a Tree, Buy Someone Coffee...' %>
+      <%= f.text_field :title, placeholder: 'e.g. Plant a Tree, Buy Someone Coffee, Write a Thank You Note...' %>
     </p>
     <p>
       <%= f.label :description, 'Details' %>
       <%= f.text_area :description, placeholder: 'Brief description of what you plan to do.' %>
     </p>
     <p>
-      <%= f.label :location, 'Where do you live?' %>
+      <%= f.label :location %>
       <%= f.text_field :location %>
     </p>
     <p>

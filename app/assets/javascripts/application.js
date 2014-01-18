@@ -22,6 +22,6 @@ $(function(){ $(document).foundation()});
 
 $(function(){
   // $(document).foundation();
-  $.backstretch('https://dl.dropboxusercontent.com/u/14594743/bg1.JPG');
+  $.backstretch('https://dl.dropboxusercontent.com/u/14594743/bg1.png');
 })
 

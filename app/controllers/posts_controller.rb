@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     if params[:user_id]
       @posts = Post.where(user_id: params[:user_id]).order(date_completed: :desc, created_at: :desc)
     else
-      @posts = Post.order(date_completed: :desc, created_at: :desc).where('date_completed IS NOT NULL').limit(10)
+      @posts = Post.order(date_completed: :desc, created_at: :desc).where('date_completed IS NOT NULL').limit(15)
     end
   end
 
@@ -41,9 +41,9 @@ class PostsController < ApplicationController
   end
 
   def edit
-    flash[:notice] = "Access Denied"
     @post = Post.find(params[:id])
     unless @post.user_id == current_user.id
+      flash[:notice] = "Access Denied"
       redirect_to posts_path
     end
   end

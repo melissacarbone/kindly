@@ -12,7 +12,10 @@
       <strong>Category:</strong>
       <%= Category.find(@post.category_id).name %>
     </p>
-
+     <p>
+      <strong>Location:</strong>
+      <%= @post.location %>
+    </p>
     <p>
       <% if @post.date_completed == nil %>
       <strong>Date Created:</strong>
@@ -24,21 +27,21 @@
       <%= @post.date_completed.strftime('%B, %d, %Y') %>
     </p>
     <% end %>
+  </div>
 
-
-    <p>
-      <% if @inspiration > 0 %>
-      This post inspired <%= pluralize(@inspiration, 'act') %> of kindness! :):):)
-      <% end %>
-    </p>
+  <% if @inspiration > 0 %>
+  <div class='small-5 columns background'>
+    <h2>
+      This post inspired <br><span><%= pluralize(@inspiration, 'act') %> of kindness!<span>
+    </h2>
+    <% end %>
 
     <p>
       <% if @post.user_id != current_user.id %>
-      <%= link_to 'Pay it Forward!', new_post_post_path(@post) %></li>
+      Feeling Inspired?
+      <%= link_to 'Pay it Forward!', new_post_post_path(@post) %>
       <% end %>
     </p>
-    <p>
 
-    </p>
   </div>
 </div>
