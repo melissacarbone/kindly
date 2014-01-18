@@ -25,7 +25,7 @@
         <% else %>
         <td><%= post.date_completed.strftime('%B, %d, %Y') %></td>
         <% end %>
-        <td><%= User.find(post.user_id).email %></td>
+        <td><%= User.find(post.user_id).email.gsub(/@.+$/, '') %></td>
         <td><%= post.title %></td>
         <td><%= post.description %></td>
         <td><%= post.location %></td>
