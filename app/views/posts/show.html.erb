@@ -27,21 +27,37 @@
       <%= @post.date_completed.strftime('%B, %d, %Y') %>
     </p>
     <% end %>
-  </div>
-
-  <% if @inspiration > 0 %>
-  <div class='small-5 columns background'>
-    <h2>
-      This post inspired <br><span><%= pluralize(@inspiration, 'act') %> of kindness!<span>
-    </h2>
-    <% end %>
-
     <p>
       <% if @post.user_id != current_user.id %>
       Feeling Inspired?
       <%= link_to 'Pay it Forward!', new_post_post_path(@post) %>
       <% end %>
     </p>
+  </div>
+
+  <% if @inspiration > 0 %>
+  <div class='small-5 columns background'>
+    <h1>
+      This post inspired <br><span><%= pluralize(@inspiration, 'act') %> of kindness!<span>
+    </h1>
+
+      <div>
+        <table>
+        <thead>
+          <tr>
+            <td style='text-align:center' colspan=3>Directly Inspired Posts:</td>
+          </tr>
+        </thead>
+        <% @children.each do |child| %>
+          <tr>
+            <td><%= User.find(child.user_id).email.gsub(/@.+$/, '') %></td>
+            <td><%= child.title %></td>
+            <td><%= link_to 'View', child %></td>
+          </tr>
+        <% end %>
+        </table>
+      </div>
+    <% end %>
 
   </div>
 </div>

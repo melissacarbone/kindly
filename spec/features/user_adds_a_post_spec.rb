@@ -18,7 +18,7 @@ feature 'User adds a post' do
 
     click_link 'Share some kindness!'
     fill_in 'Title',          with: 'Coffee Surprise'
-    fill_in 'Details',    with: 'Paid for the person behind me at Starbucks.'
+    fill_in 'Details',        with: 'Paid for the person behind me at Starbucks.'
     select category1.name,    from: 'Category'
     click_button 'Share'
 

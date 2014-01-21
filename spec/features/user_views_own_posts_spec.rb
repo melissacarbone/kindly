@@ -41,4 +41,18 @@ feature 'User views their own posts', %Q{
     expect(page).to_not have_content('Title')
     expect(page).to_not have_content('Description')
   end
+
+  scenario 'authenticated user views descendants of post' do
+    current_user = FactoryGirl.create(:user)
+    sign_in
+    parent_post = create_post
+    parent_post.user_id = current_user.id
+    child_post = FactoryGirl.create(:post, parent: parent_post)
+    click_link "My Posts"
+
+    expect(page).to have_content('This post inspired 1 act of kindness')
+    expect(page).to have_content(Post.find(child_post.parent_id).email)
+
+
+  end
 end

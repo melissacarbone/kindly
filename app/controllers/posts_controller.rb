@@ -38,6 +38,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @inspiration = @post.inspired_post_count
+    @children = @post.children
   end
 
   def edit

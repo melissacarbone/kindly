@@ -9,7 +9,7 @@ class Post < ActiveRecord::Base
   belongs_to :parent,
     class_name: 'Post'
 
-    def inspired_post_count
+  def inspired_post_count
     count = 0
     children = Post.where('parent_id = ?', id)
     count += children.count
@@ -17,5 +17,9 @@ class Post < ActiveRecord::Base
       count += child.inspired_post_count
     end
     count
+  end
+
+  def children
+    Post.where('parent_id = ?', id)
   end
 end
