@@ -1,9 +1,9 @@
 <div class='row'>
   <div class='small-12 columns background'>
     <% if params[:user_id] %>
-    <h1>My Random Acts of Kindness</h1>
+    <h1>My Random Acts of Kindness <span>&hearts;</span></h1>
     <% else %>
-    <h1>Recent Random Acts of Kindness</h1>
+    <h1>Recent Random Acts of Kindness <span>&hearts;</span></h1>
     <% end %>
 
     <table>
@@ -31,7 +31,7 @@
         <% end %>
         <td><%= User.find(post.user_id).email.gsub(/@.+$/, '') %></td>
         <td><%= post.title %></td>
-        <td><%= post.description %></td>
+        <td><%= truncate( post.description, length: 100, separator: ' ', omission: '... (continued)')%></td>
         <td><%= post.location %></td>
         <td><%= post.category.name %></td>
         <% if params[:user_id] %>

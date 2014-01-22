@@ -30,7 +30,7 @@
     <p>
       <% if @post.user_id != current_user.id %>
       Feeling Inspired?
-      <%= link_to 'Pay it Forward!', new_post_post_path(@post) %>
+      <strong><%= link_to 'Pay it Forward!', new_post_post_path(@post) %></strong>
       <% end %>
     </p>
   </div>
@@ -38,7 +38,7 @@
   <% if @inspiration > 0 %>
   <div class='small-5 columns background'>
     <h1>
-      This post inspired <br><span><%= pluralize(@inspiration, 'act') %> of kindness!<span>
+      This post inspired <br><em><%= pluralize(@inspiration, 'act') %> of kindness!</em>
     </h1>
 
       <div>
