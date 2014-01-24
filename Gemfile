@@ -38,6 +38,9 @@ gem 'simple_form'
 gem 'devise'
 gem 'foundation-rails'
 gem 'pickadate-rails'
+gem 'carrierwave'
+gem 'fog'
+gem 'mini_magick'
 
 group :development do
   gem 'mailcatcher'

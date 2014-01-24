@@ -20,7 +20,8 @@
   <section class="top-bar-section">
     <!-- Right Nav Section -->
     <ul class="right">
-      <li class="current_user">Signed in as: <%= current_user.email %> </li>
+      <li class="current_user">Signed in as: <%= current_user.email %></li>
+      <li><%= image_tag current_user.image %></li>
       <li class="has-dropdown">
         <a href="#">MENU</a>
         <ul class="dropdown">

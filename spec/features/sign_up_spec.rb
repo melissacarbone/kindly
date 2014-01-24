@@ -15,6 +15,7 @@ feature 'User signs up' do
 
     expect(page).to have_content('You have successfully created an account!')
     expect(page).to have_content('Sign Out')
+    expect(User.last.image.url).to be_present
   end
 
   scenario 'required information is not supplied' do

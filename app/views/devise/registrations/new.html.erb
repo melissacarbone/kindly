@@ -10,6 +10,9 @@
     <%= f.input :email, label: 'E-mail', required: true, autofocus: true %>
     <%= f.input :password, required: true %>
     <%= f.input :password_confirmation, label: 'Password Confirmation', required: true %>
+    <%= f.label :image, "Upload a Photo" %>
+    <%= f.file_field :image %>
+
     <div class="form-actions">
       <%= f.button :submit, "Sign Up" %>
     </div>

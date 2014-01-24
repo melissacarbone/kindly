@@ -5,6 +5,9 @@
     </h1>
 
     <p>
+    <%= image_tag User.find(@post.user_id).image %><br><%= User.find(@post.user_id).first_name %>
+    </p>
+    <p>
       <strong>Details:</strong>
       <%= @post.description %>
     </p>
@@ -30,7 +33,7 @@
     <p>
       <% if @post.user_id != current_user.id %>
       Feeling Inspired?
-      <strong><%= link_to 'Pay it Forward!', new_post_post_path(@post) %></strong>
+      <strong><%= link_to 'Pay it Forward!', new_post_post_path(@post), class: 'button' %></strong>
       <% end %>
     </p>
   </div>
@@ -45,12 +48,13 @@
         <table>
         <thead>
           <tr>
-            <td style='text-align:center' colspan=3>Directly Inspired Posts:</td>
+            <td style='text-align:center' colspan=4>Directly Inspired Posts:</td>
           </tr>
         </thead>
         <% @children.each do |child| %>
           <tr>
-            <td><%= User.find(child.user_id).email.gsub(/@.+$/, '') %></td>
+            <td><%= image_tag User.find(child.user_id).image %></td>
+            <td><%= User.find(child.user_id).first_name %></td>
             <td><%= child.title %></td>
             <td><%= link_to 'View', child %></td>
           </tr>
