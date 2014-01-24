@@ -36,10 +36,10 @@
   </div>
 
   <% if @inspiration > 0 %>
-  <div class='small-5 columns background'>
-    <h1>
-      This post inspired <br><em><%= pluralize(@inspiration, 'act') %> of kindness!</em>
-    </h1>
+    <div class='small-5 columns background show'>
+      <h1>
+        This post inspired <br><em><%= pluralize(@inspiration, 'act') %> of kindness!</em>
+      </h1>
 
       <div>
         <table>
@@ -57,6 +57,8 @@
         <% end %>
         </table>
       </div>
+  <% else %>
+
     <% end %>
 
   </div>

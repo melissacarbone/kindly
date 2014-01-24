@@ -8,17 +8,31 @@
 
 .background {
   background-color: rgba(255,255,255,0.9);
-
+  border-radius: 2em;
+  margin-top: 20px
 }
 
 .current_user {
   color: #FFF;
   padding-top: 10px;
-  font-size: 16px;
+  font-size: 16px
+}
+
+.edit{
+  margin-left: 100px;
+  margin-bottom: 50px
 }
 
 .welcome{
   text-align: center
+}
+
+.signin {
+  margin-left: 40px
+}
+
+.display {
+  margin-left: 130px
 }
 
 
