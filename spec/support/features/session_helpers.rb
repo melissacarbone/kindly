@@ -8,6 +8,7 @@ module Features
       fill_in 'E-mail',               with: 'user@example.com'
       fill_in 'user_password',        with: 'password'
       fill_in 'Password Confirmation',with: 'password'
+      attach_file 'Image', Rails.root.join('spec/file_fixtures/example_image.jpg')
       click_button 'Sign Up'
     end
 

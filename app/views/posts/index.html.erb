@@ -29,7 +29,7 @@
         <% else %>
         <td><%= post.date_completed.strftime('%B, %d, %Y') %></td>
         <% end %>
-        <td><%= User.find(post.user_id).email.gsub(/@.+$/, '') %></td>
+        <td class="image"><%= image_tag User.find(post.user_id).image %></td>
         <td><%= post.title %></td>
         <td><%= truncate( post.description, length: 100, separator: ' ', omission: '... (continued)')%></td>
         <td><%= post.location %></td>
