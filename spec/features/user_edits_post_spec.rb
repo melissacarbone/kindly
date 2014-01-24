@@ -3,7 +3,8 @@ require 'spec_helper'
 feature 'User edits a post' do
 
   scenario 'with required and valid attributes' do
-    sign_in
+    current_user = FactoryGirl.create(:user)
+    sign_in(current_user)
     post = create_post
 
     click_link 'My Posts'
@@ -17,7 +18,8 @@ feature 'User edits a post' do
   end
 
   scenario 'with missing or invalid attributes' do
-    sign_in
+    current_user = FactoryGirl.create(:user)
+    sign_in(current_user)
     post = create_post
 
     click_link 'My Posts'

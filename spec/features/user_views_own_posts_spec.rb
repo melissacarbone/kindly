@@ -44,14 +44,14 @@ feature 'User views their own posts', %Q{
 
   scenario 'authenticated user views descendants of post' do
     current_user = FactoryGirl.create(:user)
-    sign_in
-    parent_post = create_post
-    parent_post.user_id = current_user.id
+    parent_post = FactoryGirl.create(:post, user: current_user)
     child_post = FactoryGirl.create(:post, parent: parent_post)
+    sign_in(current_user)
     click_link "My Posts"
+    click_link "View"
 
     expect(page).to have_content('This post inspired 1 act of kindness')
-    expect(page).to have_content(Post.find(child_post.parent_id).email)
+    expect(page).to have_content(parent_post.user.first_name)
 
 
   end

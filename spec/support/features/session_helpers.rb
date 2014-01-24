@@ -8,12 +8,11 @@ module Features
       fill_in 'E-mail',               with: 'user@example.com'
       fill_in 'user_password',        with: 'password'
       fill_in 'Password Confirmation',with: 'password'
-      attach_file 'Image', Rails.root.join('spec/file_fixtures/example_image.jpg')
+      attach_file 'Upload a Photo', Rails.root.join('spec/file_fixtures/example_image.jpg')
       click_button 'Sign Up'
     end
 
-    def sign_in
-      user = FactoryGirl.create(:user)
+    def sign_in(user)
       visit new_user_session_path
       fill_in 'E-mail',               with: user.email
       fill_in 'Password',             with: user.password

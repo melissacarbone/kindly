@@ -3,6 +3,7 @@ FactoryGirl.define do
     title 'Coffee'
     description 'I paid for coffee for the person behind me at Starbucks.'
     location 'New York'
-    category_id 1
+    category
+    user
   end
 end

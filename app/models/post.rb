@@ -8,6 +8,9 @@ class Post < ActiveRecord::Base
   belongs_to :category
   belongs_to :parent,
     class_name: 'Post'
+  has_many :children,
+    class_name: 'Post',
+    foreign_key: 'parent_id', dependent: :nullify
 
   def inspired_post_count
     count = 0
@@ -19,7 +22,7 @@ class Post < ActiveRecord::Base
     count
   end
 
-  def children
-    Post.where('parent_id = ?', id)
-  end
+  # def children
+  #   Post.where('parent_id = ?', id)
+  # end
 end
