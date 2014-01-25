@@ -21,8 +21,4 @@ class Post < ActiveRecord::Base
     end
     count
   end
-
-  # def children
-  #   Post.where('parent_id = ?', id)
-  # end
 end

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :posts, dependent: :destroy
+  has_many :posts, dependent: :nullify
 
   mount_uploader :image, ImageUploader
 
