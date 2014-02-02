@@ -16,8 +16,10 @@
 /tmp
 
 config/database.yml
+config/newrelic.yml
 config/initializers/secret_token.rb
 
 public/uploads
 
 .env
+
