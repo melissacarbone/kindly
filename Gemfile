@@ -41,6 +41,7 @@ gem 'pickadate-rails'
 gem 'carrierwave'
 gem 'fog'
 gem 'mini_magick'
+gem 'newrelic_rpm'
 
 group :development do
   gem 'mailcatcher'
