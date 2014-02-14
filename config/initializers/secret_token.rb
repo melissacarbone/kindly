@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Kindly::Application.config.secret_key_base = '88d09eb8d44ad2802c4d85227ca039b454a4001359fd35f4200fd83bcf5dd4c353a71f8d41d7abf351017a5643ab818b85a70fe216274170f5f9345cd7cbd86e'
+Kindly::Application.config.secret_key_base = ENV['rails_secret_token']
