@@ -1,28 +1,23 @@
-== README
+== KINDLY
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Kindly is the fun and easy way to increase your Random Acts of Kindness!  Gain inspiration from others, plan what you would like to do, then share it with the world!
 
-Things you may want to cover:
+Kindly was originally created as an independent project at Launch Academy.
 
-* Ruby version
+* Ruby version 2.0.0
+* Rails 4.0
+* PostgreSQL
 
-* System dependencies
+DATABASE
+  rake db:create
+  rake db:migrate
+  rake db:seed
 
-* Configuration
+CONFIG
+Set up a .env file with secret keys:
+  export aws_access_key="<SECRET_KEY1>"
+  export aws_secret_key="<SECRET_KEY2>"
 
-* Database creation
+  export devise_secret_key="<SECRET_KEY3>"
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+  export rails_secret_token="<SECRET_KEY4>"
